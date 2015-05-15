@@ -1,3 +1,3 @@
-# toronto-city-hall-api
+# Toronto City Hall API
 
-a [Sails](http://sailsjs.org) application
+Powering the future of open source municipal projects in and around Toronto.
