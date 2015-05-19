@@ -2,7 +2,11 @@
 
 Powering the future of open source municipal projects in and around Toronto.
 
-## Setup ##
+## Accessing the API ##
+
+The API has not been publicly staged yet, but that's going to change in the near future.
+
+## Hacking on the API ##
 
 Clone & build.
 
