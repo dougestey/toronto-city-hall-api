@@ -9,7 +9,7 @@ Clone & build.
     $ cd toronto-city-hall-api
     $ npm install
 
-Next, install Sails CLI. Alternatively, run these commands from your the local project node_modules.
+Next, install Sails CLI. Alternatively, run these commands from your local project node_modules.
 
     $ npm install -g sails && npm install -g sails-migrations
 
