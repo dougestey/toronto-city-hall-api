@@ -15,7 +15,6 @@ exports.up = function(knex, Promise) {
       table.integer('councillor').references('councillor.id').index();
     })
     .table('councillor', function(table) {
-      table.dropColumn('ward');
       table.integer('ward').references('ward.id').index();
     })
   
@@ -26,7 +25,6 @@ exports.down = function(knex, Promise) {
   return knex.schema
     .table('councillor', function(table){
       table.dropColumn('ward');
-      table.text('ward');
     })
     .dropTable('ward')
 

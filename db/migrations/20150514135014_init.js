@@ -25,7 +25,6 @@ exports.up = function(knex, Promise) {
       table.text('firstName');
       table.text('lastName');
       table.text('bio');
-      table.text('ward');
       table.text('phone');
     });
   
