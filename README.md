@@ -21,7 +21,7 @@ You have two options for data persistence: sails-disk (dev only) or sails-postgr
 
 If you're using the former, skip straight to the lifting the sails.
 
-If you're using an SQL db, configure the connection you wish to use in [config/connections.js](https://github.com/designcofounders/toronto-city-hall-api/blob/master/config/connections.js). Then install sails-migrations CLI and provision your DB:
+If you're using an SQL db, configure the connection you wish to use in [config/connections.js](https://github.com/designcofounders/toronto-city-hall-api/blob/master/config/connections.js) and updated [config/env/development.js](https://github.com/designcofounders/toronto-city-hall-api/blob/master/config/env/development.js) to reference the postgres db. Then install sails-migrations CLI and provision the database:
 ```
 $ npm install -g sails-migrations
 $ sails-migrations migrate
