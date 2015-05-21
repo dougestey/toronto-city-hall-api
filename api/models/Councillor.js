@@ -14,12 +14,12 @@ module.exports = {
       required: true
     },
 
-    firstName: {
+    first_name: {
       type: 'string',
       required: true
     },
 
-    lastName: {
+    last_name: {
       type: 'string',
       required: true
     },
@@ -33,12 +33,28 @@ module.exports = {
       required: true
     },
 
-    avatarUrl: {
+    image_url: {
+      type: 'string'
+    },
+
+    website_url: {
+      type: 'string'
+    },
+
+    twitter_handle: {
+      type: 'string'
+    },
+
+    facebook_handle: {
       type: 'string'
     },
 
     bio: {
       type: 'text'
+    },
+
+    terms: {
+      type: 'json'
     }
 
   }
