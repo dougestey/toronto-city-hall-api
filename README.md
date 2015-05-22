@@ -25,7 +25,7 @@ If you're using SQL, configure the connection you wish to use in [config/connect
 
 If you'd like a fresh, empty db to hack on then skip this step and go straight to migrations - but if you'd like to bootstrap with the latest available snapshot, run the following:
 
-    $ psql your_db_name < db/2015-05-22.sql 
+    $ psql your_db_name < db/init/2015-05-22.sql 
 
 A user by the name of toronto_api_user will need access to your db (you can change this by replacing it with your desired username in the import file.)
 
