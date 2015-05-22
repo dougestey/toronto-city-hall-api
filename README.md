@@ -29,7 +29,7 @@ If you'd like a fresh, empty db to hack on then skip this step and go straight t
 
 A user by the name of toronto_api_user will need access to your db (you can change this by replacing it with your desired username in the import file.)
 
-Then install sails-migrations CLI and provision the database:
+Then install sails-migrations CLI and provision the database. It's important to do this even if you imported an SQL snapshot, as its schema may have changed since it was taken.
 ```
 $ npm install -g sails-migrations
 $ sails-migrations migrate
