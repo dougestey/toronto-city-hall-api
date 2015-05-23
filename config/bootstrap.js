@@ -9,6 +9,8 @@
  * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.bootstrap.html
  */
 
+Promise = require('bluebird');
+
 module.exports.bootstrap = function(cb) {
 
   // It's very important to trigger this callback method when you are finished
