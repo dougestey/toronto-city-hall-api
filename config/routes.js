@@ -36,7 +36,7 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'GET /cron': 'CronController.run'
+  'GET /refresh/wards': 'CronController.fetchWards'
 
   /***************************************************************************
   *                                                                          *
