@@ -49,6 +49,7 @@ var Scheduler = {
         
         if (response.statusCode == 429){
           console.log('Error: API limit reached.');
+          d.reject();
         }
         
         var data = "";

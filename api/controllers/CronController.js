@@ -11,12 +11,22 @@ module.exports = {
     var options = {
       host: 'api.namara.io',
       port: 80,
-      path: '/v0/data_sets/13364600-a54a-49bf-8a55-c84694a7d52d/data/en-0?api_key=ce383a73780252eadbc1b2fc557914d2b06116150a501eeeaff18ae01bf180a6&limit=150'
+      path: '/v0/data_sets/13364600-a54a-49bf-8a55-c84694a7d52d/data/en-0?limit=150&api_key=' + Keys.namara
     }; 
     Scheduler.run(options).then(function(data){
+      console.log(data.length);
+      for (var i = 0; i < data.length; i++) {
+        /*Ward.create({
+          number: data[i].scode_name,
+          region: data[i].name,
+          geo: data[i].geometry
+        })
+        .exec(function(err, user) { console.log(err); console.log(user); });*/
+      }
       res.type('application/json').send(data, 200);
     });
   }
   
 };
 
+            
