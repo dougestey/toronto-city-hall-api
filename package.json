@@ -23,7 +23,9 @@
     "sails": "~0.11.0",
     "sails-disk": "~0.10.0",
     "sails-migrations": "^2.0.7",
-    "sails-postgresql": "^0.10.14"
+    "sails-postgresql": "^0.10.14",
+    "cron": "^1.0.9",
+    "bluebird": "^2.9.25"
   },
   "scripts": {
     "start": "node app.js",
