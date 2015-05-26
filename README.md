@@ -39,7 +39,7 @@ Finally, lift the sails:
 
     $ sails lift
 
-## Updating data against third party data ##
+## Updating against third party data ##
 
 The API is capable of updating its local database against external information on wards, councillors, agendas, etc. These updates are scheduled through the [Update service](https://github.com/designcofounders/toronto-city-hall-api/blob/master/api/services/Update.js). Their schedules start running on server startup in [config/bootstrap.js](https://github.com/designcofounders/toronto-city-hall-api/blob/master/config/bootstrap.js), but you can also invoke them manually by curling the routes available in [config/routes.js](https://github.com/designcofounders/toronto-city-hall-api/blob/master/config/routes.js).
 
