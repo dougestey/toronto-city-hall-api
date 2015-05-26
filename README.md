@@ -47,7 +47,7 @@ You're going to want to specify the API keys you're using to access said third p
 
 For example, if you wanted to get the latest ward data & geometry from a service like Namara.io, you would run:
 
-$ curl http://localhost:1337/update/wards
+    $ curl http://localhost:1337/update/wards
 
 Your server console will tell you how it goes. :)
 
