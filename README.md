@@ -38,3 +38,16 @@ $ sails-migrations migrate
 Finally, lift the sails:
 
     $ sails lift
+
+## Updating data against third party data ##
+
+The API is capable of updating its local database against external information on wards, councillors, agendas, etc. These updates are scheduled through the [Update service](https://github.com/designcofounders/toronto-city-hall-api/blob/master/api/services/Update.js). Their schedules start running on server startup in [config/bootstrap.js](https://github.com/designcofounders/toronto-city-hall-api/blob/master/config/bootstrap.js), but you can also invoke them manually by curling the routes available in [config/routes.js](https://github.com/designcofounders/toronto-city-hall-api/blob/master/config/routes.js).
+
+You're going to want to specify the API keys you're using to access said third parties. Place them in [keys/](https://github.com/designcofounders/toronto-city-hall-api/tree/master/keys) and update [api/services/Keys.js](https://github.com/designcofounders/toronto-city-hall-api/blob/master/api/services/Keys.js) accordingly before attempting to run things in the Update service.
+
+For example, if you wanted to get the latest ward data & geometry from a service like Namara.io, you would run:
+
+$ curl http://localhost:1337/update/wards
+
+Your server console will tell you how it goes. :)
+
