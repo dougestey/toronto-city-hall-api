@@ -47,8 +47,15 @@ module.exports.connections = {
     user: 'toronto_api_user',
     password: '',
     database: 'toronto'
-  }
+  },
 
+  pupaDb: {
+    adapter: 'sails-postgresql',
+    host: 'localhost',
+    user: 'toronto_api_user',
+    password: '',
+    database: 'pupa'
+  }
 
   /***************************************************************************
   *                                                                          *
