@@ -13,7 +13,7 @@ Promise = require('bluebird');
 
 module.exports.bootstrap = function(cb) {
 
-  Update.wards().then(function(data){
+  Update.scheduleWards().then(function(data){
     cb();
   });
 
