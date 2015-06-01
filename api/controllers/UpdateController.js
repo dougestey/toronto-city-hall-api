@@ -7,11 +7,17 @@
 
 module.exports = {
 
+  scheduleWardsUpdate: function(req, res){
+    Update.scheduleWards().then(function(data){
+      res.type('application/json').send(data, 200);
+    });
+  },
+
   updateWards: function(req, res){
     Update.wards().then(function(data){
       res.type('application/json').send(data, 200);
     });
-  },
+  }
   
 };
 

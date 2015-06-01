@@ -10,8 +10,7 @@ var Update = {
   /*
    * Update.wards
    *
-   * Runs every weekday (Monday through Friday)
-   * at 4:30:00 PM.
+   * Manual call to update wards immediately.
    */
   wards: function(){
     var d = Promise.defer();
@@ -20,33 +19,30 @@ var Update = {
       port: 80,
       path: '/v0/data_sets/13364600-a54a-49bf-8a55-c84694a7d52d/data/en-0?limit=150&api_key=' + Keys.namara
     }; 
+    var task = Update._commitWardUpdates;
+    Update.run(httpOptions).then(function(data){
+      d.resolve(data);
+      console.log('[scheduler] Call succeeded. Running task...');
+      task(data);
+    });
+    return d.promise;
+  },
+
+  /*
+   * Update.scheduleWards
+   *
+   * Runs every weekday (Monday through Friday)
+   * at 4:30:00 PM.
+   */
+  scheduleWards: function(){
+    var d = Promise.defer();
+    var httpOptions = {
+      host: 'api.namara.io',
+      port: 80,
+      path: '/v0/data_sets/13364600-a54a-49bf-8a55-c84694a7d52d/data/en-0?limit=150&api_key=' + Keys.namara
+    }; 
     var interval = '00 30 16 * * 1-5';
-    var task = function(data){
-      var data = JSON.parse(data);
-      data.forEach(function(ward) {
-        Ward.findOne()
-        .where({ number: parseInt(ward.scode_name, 10) })
-        .exec(function(err, datum){
-          if (!datum) {
-            console.log('[wards] No record for ' + ward.scode_name +', creating new...');
-            Ward.create({
-              number: parseInt(ward.scode_name, 10),
-              region: ward.name,
-              geo: ward.geometry
-            })
-            .exec(function(e, d){});
-          } else {
-            console.log('[wards] Record found for ' + ward.scode_name +', updating...');
-            Ward.update({ number: parseInt(ward.scode_name, 10) }, {
-              number: parseInt(ward.scode_name, 10),
-              region: ward.name,
-              geo: ward.geometry
-            })
-            .exec(function(e, d){});
-          }
-        });
-      });
-    };
+    var task = Update._commitWardUpdates;
     Update.schedule(httpOptions, interval, task).then(function(data){
       d.resolve(data);
     });
@@ -115,6 +111,38 @@ var Update = {
       });
     });
     return d.promise;
+  },
+
+  /*
+   * Update._commitWardUpdates
+   *
+   * Internal function used to commit ward updates to db.
+   */
+  _commitWardUpdates: function(data){
+    var data = JSON.parse(data);
+    data.forEach(function(ward) {
+      Ward.findOne()
+      .where({ number: parseInt(ward.scode_name, 10) })
+      .exec(function(err, datum){
+        if (!datum) {
+          console.log('[wards] No record for ' + ward.scode_name +', creating new...');
+          Ward.create({
+            number: parseInt(ward.scode_name, 10),
+            region: ward.name,
+            geo: ward.geometry
+          })
+          .exec(function(e, d){});
+        } else {
+          console.log('[wards] Record found for ' + ward.scode_name +', updating...');
+          Ward.update({ number: parseInt(ward.scode_name, 10) }, {
+            number: parseInt(ward.scode_name, 10),
+            region: ward.name,
+            geo: ward.geometry
+          })
+          .exec(function(e, d){});
+        }
+      });
+    });
   }
 
 };
