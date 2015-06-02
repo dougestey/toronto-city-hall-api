@@ -1,0 +1,9 @@
+source 'https://supermarket.chef.io'
+
+cookbook 'apt'
+cookbook 'database'
+cookbook 'git'
+cookbook 'nodejs'
+cookbook 'postgresql'
+cookbook 'city-hall-api',
+  path: 'cookbooks/city-hall-api'

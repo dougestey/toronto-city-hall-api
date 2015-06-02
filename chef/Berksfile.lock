@@ -1,0 +1,51 @@
+DEPENDENCIES
+  apt
+  city-hall-api
+    path: cookbooks/city-hall-api
+  database
+  git
+  nodejs
+  postgresql
+
+GRAPH
+  7-zip (1.0.2)
+    windows (>= 1.2.2)
+  apt (2.7.0)
+  ark (0.9.0)
+    7-zip (>= 0.0.0)
+    windows (>= 0.0.0)
+  build-essential (2.2.3)
+  chef-sugar (3.1.0)
+  chef_handler (1.1.9)
+  city-hall-api (0.0.0)
+    database (>= 0.0.0)
+    git (>= 0.0.0)
+    nodejs (>= 0.0.0)
+    postgresql (>= 0.0.0)
+  database (4.0.6)
+    postgresql (>= 1.0.0)
+  dmg (2.2.2)
+  git (4.2.2)
+    build-essential (>= 0.0.0)
+    dmg (>= 0.0.0)
+    windows (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  homebrew (1.12.0)
+    build-essential (>= 2.1.2)
+  nodejs (2.4.0)
+    apt (>= 0.0.0)
+    ark (>= 0.0.0)
+    build-essential (>= 0.0.0)
+    homebrew (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  openssl (4.0.0)
+    chef-sugar (>= 0.0.0)
+  postgresql (3.4.20)
+    apt (>= 1.9.0)
+    build-essential (>= 0.0.0)
+    openssl (~> 4.0.0)
+  windows (1.37.0)
+    chef_handler (>= 0.0.0)
+  yum (3.6.0)
+  yum-epel (0.6.0)
+    yum (~> 3.0)
