@@ -4,6 +4,11 @@ Vagrant.configure(2) do |config|
 
   config.vm.network "forwarded_port", guest: 1337, host: 1337
 
+  config.vm.provider "virtualbox" do |vbox|
+    vbox.memory = 1024
+    vbox.cpus = 4
+  end
+
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
   end
@@ -17,8 +22,8 @@ Vagrant.configure(2) do |config|
     chef.add_recipe "nodejs"
     chef.add_recipe "postgresql::server"
     chef.add_recipe "city-hall-api::default"
+    chef.add_recipe "city-hall-api::pupa"
 
-    #chef.version = "11.18.12"
     chef.version = "12.3.0"
     chef.json = {
       postgresql: {

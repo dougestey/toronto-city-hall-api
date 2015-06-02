@@ -32,7 +32,7 @@ postgresql_database_user "toronto_api_user" do
   password "sekret"
 end
 
-databases = ["toronto", "pupa"]
+databases = ["toronto"]
 
 databases.each do |db_name|
   postgresql_database db_name do
@@ -45,6 +45,16 @@ databases.each do |db_name|
     code "psql #{db_name} < #{install_path}/db/init/#{db_name}_*.sql"
   end
 end
+
+package "postgresql-9.3-postgis-2.1"
+
+postgresql_database "create-db-and-enable-postgis-extension" do
+  connection db_cnnx_info
+  database_name "pupa"
+  sql "CREATE EXTENSION postgis"
+  action [:create, :query]
+end
+
 
 execute "npm install" do
   user "root"
