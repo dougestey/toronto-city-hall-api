@@ -4,6 +4,7 @@ node_app_path = Pathname.new(install_path).dirname.to_s
 directory node_app_path do
   owner "root"
   group "root"
+  mode "0777"
 end
 
 git "city-hall-api" do
