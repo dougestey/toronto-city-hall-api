@@ -47,12 +47,12 @@ databases.each do |db_name|
   end
 end
 
-package "postgresql-9.3-postgis-2.1"
+package "postgresql-#{node['postgresql']['version']}-postgis-2.1"
 
 postgresql_database "create-db-and-enable-postgis-extension" do
   connection db_cnnx_info
   database_name "pupa"
-  sql "CREATE EXTENSION postgis"
+  sql "CREATE EXTENSION IF NOT EXISTS postgis"
   action [:create, :query]
 end
 
