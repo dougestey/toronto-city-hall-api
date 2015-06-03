@@ -14,8 +14,15 @@ Vagrant.configure(2) do |config|
     vbox.cpus = 4
   end
 
+  # Optional plugin to speed up provisioning
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
+  end
+
+  unless Vagrant.has_plugin?("vagrant-berkshelf")
+    output = "This Vagrant project requires the Berkshelf plugin. Please run: \n"
+    output += "~$ vagrant plugin install vagrant-berkshelf"
+    raise output
   end
 
   # Workaround required until this issue is resolved:
