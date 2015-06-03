@@ -1,5 +1,10 @@
+# Explicitly set provider so we can access it later in the envvar.
+ENV['VAGRANT_DEFAULT_PROVIDER'] = "virtualbox"
+
 Vagrant.configure(2) do |config|
-  config.vm.define "toronto-city-hall-api"
+  machine_name = "toronto-city-hall-api"
+  config.vm.define machine_name
+
   config.vm.box = "ubuntu/trusty64"
 
   config.vm.network "forwarded_port", guest: 1337, host: 1337
@@ -11,6 +16,19 @@ Vagrant.configure(2) do |config|
 
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
+  end
+
+  # Workaround required until this issue is resolved:
+  # https://github.com/mitchellh/vagrant/issues/5199#issuecomment-73278236
+  if Vagrant.has_plugin?("vagrant-triggers")
+    config.trigger.before [:reload, :halt], stdout: true do
+      Dir.chdir '..' while !File.exist?('Vagrantfile')
+      `rm .vagrant/machines/#{machine_name}/#{ENV['VAGRANT_DEFAULT_PROVIDER']}/synced_folders`
+    end
+  else
+    output =  "This Vagrant project requires the Triggers plugin. Please run: \n"
+    output += "~$ vagrant plugin install vagrant-triggers"
+    raise output
   end
 
   config.berkshelf.berksfile_path = "chef/Berksfile"

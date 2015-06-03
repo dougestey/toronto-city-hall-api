@@ -65,6 +65,7 @@ Requires Vagrant be installed and the following pre-requisites:
 
 ```
 vagrant plugin install vagrant-berkshelf
+vagrant plugin install vagrant-triggers
 vagrant plugin install vagrant-cachier # Optional
 ```
 
