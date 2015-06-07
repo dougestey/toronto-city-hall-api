@@ -58,3 +58,24 @@ For example, if you wanted to get the latest ward data & geometry from a service
     $ curl http://localhost:1337/update/wards
 
 Your server console will tell you how it goes. :)
+
+## Using Vagrant
+
+Requires Vagrant be installed and the following pre-requisites:
+
+```
+vagrant plugin install vagrant-berkshelf
+vagrant plugin install vagrant-triggers
+vagrant plugin install vagrant-cachier # Optional
+```
+
+```
+vagrant up
+patch --strip 0 --forward < chef/set-db-credentials.diff
+vagrant ssh
+cd /opt/nodejs/city-hall-api
+node_modules/.bin/sails lift
+```
+
+You should now be able to hit the site at `http://localhost:1337/motion`
+on either your host or guest VM.
