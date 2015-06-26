@@ -25,7 +25,7 @@ module.exports = {
     },
 
     ward: {
-      model: 'ward'
+      model: 'ward',
     },
 
     phone: {
